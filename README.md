@@ -2,7 +2,7 @@
 <!-- ``` -->
 Java app that simulates simple behaviours of organisms that need to compete for limited resources.
 <!-- ``` -->
-## What I learned
+## Sillks used
 <!-- ``` -->
 * OOP
 <!-- ``` -->
