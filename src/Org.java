@@ -5,6 +5,7 @@ public class Org {
     private final int BACTERIA = 2;
     private final int VIRUS = 3;
     private final int CANCER = 4;
+    private final int DEFAULT_TTL = 5;
 
     /* private var */
     int type;
@@ -16,6 +17,7 @@ public class Org {
     /* constructor */
     Org() {
         this.type = EMPTY;
+        this.ttl = DEFAULT_TTL;
     }
 
     /* getters */

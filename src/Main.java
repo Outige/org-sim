@@ -10,10 +10,15 @@ public class Main {
         int maxFood = 5;
 
         Sim sim = new Sim(BOARD_SIZE, 5);
+        sim.placeBacteria(board.getBoard());
         do  {
-            sim.placeFood(board.getBoard());
+            while (sim.placeFood(board.getBoard()) == 0) { //! bs
+
+            }
+            
             board.print_board();
             sim.reduceAllTtl(board.getBoard());
         } while (sim.isSim(board.getBoard()));
+        board.print_board();
     }
 }
