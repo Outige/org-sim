@@ -1,6 +1,13 @@
 public class Org {
+    /* const var */
+    private final int EMPTY = 0;
+    private final int FOOD = 1;
+    private final int BACTERIA = 2;
+    private final int VIRUS = 3;
+    private final int CANCER = 4;
+
     /* private var */
-    Type type;
+    int type;
     int ttl;
 
     /* public var */
@@ -8,32 +15,29 @@ public class Org {
 
     /* constructor */
     Org() {
-        this.type = Type.EMPTY;
+        this.type = EMPTY;
     }
 
     /* getters */
-    Type getType() {
+    int getType() {
         return this.type;
     }
 
+    int getTtl() {
+        return this.ttl;
+    }
+
     /* setters */
-    //
+    void setType(int type) {
+        this.type = type;
+    }
+
+    void setTtl(int ttl) {
+        this.ttl = ttl;
+    }
 
     /* toString */
     public String toString() {
-        return String.format("Org {\nType: %s\n}\n", this.type.toString());
-    }
-
-
-   /*
-     * Maybe food is org specific?
-     * Maybe or should be a Type and not an enum
-     */
-    public enum Type {
-      BACTERIA,
-      VIRUS,
-      CANCER,
-      FOOD,
-      EMPTY
+        return String.format("Org {\nType: %d\n}\n", this.type);
     }
 }
