@@ -9,7 +9,6 @@ public class Org {
     /* private var */
     int type;
     int ttl;
-    // Org org;
 
     /* public var */
     //
