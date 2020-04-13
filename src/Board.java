@@ -36,18 +36,18 @@ public class Board {
     void print_board() {
         String string = "";
         for (int i = 0; i < this.length; i++) {
-            string += String.format("%d\t", i+1);
+            string += String.format("%d\t", i);
         }
         string += "\n";
         for (int i = 0; i < this.length; i++) {
-            string += String.format("- - -\t", i+1);
+            string += String.format("- - -\t");
         }
         string += "\n";
         for (int i = 0; i < this.length; i++) {
             for (int j = 0; j < this.length; j++) {
                 string += String.format("%d\t", this.board[i][j].getOrg(0).getType());
             }
-            string += String.format("|%d", i+1);
+            string += String.format("|%d", i);
             string += "\n";
         }
 

@@ -34,13 +34,24 @@ public class Square {
     }
     
     /* setters */
-    public void setOrg(int i, int type) {
+    public void setOrg(int i, int type, int ttl) {
         this.orgs[i].setType(type);
+        this.orgs[i].setTtl(ttl);
+    }
+
+    public void setOrg(int i, Org org) {
+        this.orgs[i].setTtl(org.getTtl());
+        this.orgs[i].setType(org.getType());
     }
 
     /* toString */
     public String toString(){
         // return String.format("Sqr {\nCount: %d\n\n%s\n}\n", this.count, this.org.toString());
         return String.format("todo\n");
+    }
+
+    /* functions */
+    public void deleteOrg(int i) {
+        this.orgs[0] = new Org();
     }
 }
