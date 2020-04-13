@@ -8,7 +8,7 @@ public class Board {
     private final int CANCER = 4;
 
     //! this will be passed in a params
-    private final int DEF_TTL = 5;
+    private final int DEF_TTL = 15;
 
     /* private var */
     private final int length;
@@ -29,7 +29,10 @@ public class Board {
     }
 
     /* getters */
-    //
+    //! this seems shit
+    int getType(int x, int y) {
+        return board[x][y].type;
+    }
 
     /* setters */
     public void setEmpty(int x, int y) {
@@ -89,9 +92,6 @@ public class Board {
                 if (this.board[i][j].getType() == org) {
                     list.add(i);
                     list.add(j);
-                    // a[count][0] = i;
-                    // a[count][1] = j;
-                    // count += 1;
                 }
             }
         }
@@ -105,15 +105,24 @@ public class Board {
             board[x][y] = new Empty();
     }
 
-    /* toString */
-    // public String toString() {
-    //     String string = "Board {\n";
-    //     for (int i = 0; i < this.length; i++) {
-    //         for (int j = 0; j < this.length; j++) {
-    //             string += String.format("[%d][%d]\n%s", i, j, this.board[i][j]);
-    //         }
-    //     }
-    //     string += " }\n";
-    //     return string;
-    // }
+    public void getMoveList(int size, int x, int y, ArrayList<Integer> list) {
+        //! this is gonna be a huge case statement
+        Org org = board[x][y];
+        if (org.getType() == BACTERIA) {
+            ((Bacteria) org).getMoveList(size, x, y, list);
+        }
+    }
+
+    public void moveOrg(int x0, int y0, int x1, int y1) {
+        //! gonna be a big switch statement
+        if (board[x0][y0].getType() == BACTERIA) {
+        if (board[x1][y1].getType() == FOOD) {
+        board[x1][y1] = new Bacteria(DEF_TTL);
+                board[x0][y0] = new Empty();
+            } else if (board[x1][y1].getType() == EMPTY) {
+        board[x1][y1] = new Bacteria(board[x0][y0].getTtl());
+                board[x0][y0] = new Empty();
+            }
+        }
+    }
 }

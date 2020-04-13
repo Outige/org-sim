@@ -14,15 +14,27 @@ public class Main {
     
     public static void main(String[] args) {
         Board board = new Board(BOARD_SIZE);
-        board.print_board();
         Sim sim = new Sim(BOARD_SIZE);
 
         /* sim */
         // while (true) {
+        // sim.playOrg(board, FOOD);
+        // sim.playOrg(board, BACTERIA);
+
+        // board.print_board();
+
+        // sim.moveOrgs(board);
+        // sim.reduceAllTtl(board);
+        // board.print_board();
+        // }
+
         sim.playOrg(board, FOOD);
         sim.playOrg(board, BACTERIA);
-        sim.reduceAllTtl(board);
+        do {
+            board.print_board();
+            sim.moveOrgs(board);
+            sim.reduceAllTtl(board);
+        } while (sim.isSim(board));
         board.print_board();
-        // }
     }
 }
