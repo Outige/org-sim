@@ -13,6 +13,7 @@ public class Bacteria extends Org {
     Bacteria(int ttl) {
         setType(BACTERIA);
         setTtl(ttl);
+        setMoved(0);
     }
 
     /* functions */

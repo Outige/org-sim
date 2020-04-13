@@ -8,7 +8,7 @@ public class Board {
     private final int CANCER = 4;
 
     //! this will be passed in a params
-    private final int DEF_TTL = 15;
+    private final int DEF_TTL = 5;
 
     /* private var */
     private final int length;
@@ -34,7 +34,15 @@ public class Board {
         return board[x][y].type;
     }
 
+    int getMoved(int x, int y) {
+        return board[x][y].moved;
+    }
+
     /* setters */
+    void setMoved(int x, int y, int set) {
+        board[x][y].setMoved(set);
+    }
+
     public void setEmpty(int x, int y) {
         this.board[x][y] = new Empty();
     }
@@ -71,6 +79,14 @@ public class Board {
         }
 
         System.out.println(string);
+    }
+
+    public void resetMoved() {
+        for (int i = 0; i < this.length; i++) {
+            for (int j = 0; j < this.length; j++) {
+                board[i][j].setMoved(0);
+            }
+        }
     }
 
     /* functions */

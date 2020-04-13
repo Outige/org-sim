@@ -9,6 +9,8 @@ public class Org {
     /* private var */
     int type;
     int ttl;
+    int moved;
+
     // Org org;
 
     /* public var */
@@ -18,6 +20,7 @@ public class Org {
     Org() {
         this.type = EMPTY;
         this.ttl = 0;
+        this.moved = 0;
     }
 
     /* getters */
@@ -29,6 +32,10 @@ public class Org {
         return this.ttl;
     }
 
+    public int getMoved() {
+        return this.moved;
+    }
+
     /* setters */
     void setType(int type) {
         this.type = type;
@@ -36,6 +43,10 @@ public class Org {
 
     void setTtl(int ttl) {
         this.ttl = ttl;
+    }
+
+    void setMoved(int x) {
+        this.moved = x;
     }
 
     /* toString */

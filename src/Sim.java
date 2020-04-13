@@ -68,8 +68,12 @@ public class Sim {
         }
     }
 
+    //! gonna make this in board
     public void moveOrg(Board board, int x0, int y0, int x1, int y1) {
+        if (board.getMoved(x0, y0) == 1) return;
+        System.out.println(String.format("[%d, %d]; [%d, %d]", x0, y0, x1, y1));
         board.moveOrg(x0, y0, x1, y1);
+        board.setMoved(x1, y1, 1);
     }
 
     public void moveOrgs(Board board) {
@@ -87,6 +91,7 @@ public class Sim {
                 }
             }
         }
+        board.resetMoved();
     }
 
     private boolean inBounds(int x, int y) {

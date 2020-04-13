@@ -10,5 +10,6 @@ public class Empty extends Org {
     Empty() {
         setType(EMPTY);
         setTtl(0);
+        setMoved(0);
     }
 }
