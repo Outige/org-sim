@@ -8,7 +8,7 @@ public class Board {
     private final int CANCER = 4;
 
     //! this will be passed in a params
-    private final int DEF_TTL = 20;
+    private final int DEF_TTL = 7;
 
     /* private var */
     private final int length;
@@ -128,11 +128,26 @@ public class Board {
             ((Bacteria) org).getMove(size, x, y, list, board);
         }
     }
+    
+    /* bacteria eat method */
+    // eats food and spawns in bac to random empty spot //! should make it adj if possible
+    private void eat(int x0, int y0, int x1, int y1) {
+        Random r = new Random();
+        int pos;
+        ArrayList<Integer> e = new ArrayList<Integer>();
+        getOrgPosns(EMPTY, e);
+        board[x1][y1] = new Bacteria(DEF_TTL);
+        board[x0][y0] = new Empty();
+        if (e.size() == 0) return;
+        pos = r.nextInt(e.size()-1);
+        if (pos %2 == 1) pos -= 1;
+        board[e.get(pos)][e.get(pos+1)] = new Bacteria(DEF_TTL);
 
+    }
+    
     private void moveBac(int x0, int y0, int x1, int y1) {
             if (board[x1][y1].getType() == FOOD) {
-                board[x1][y1] = new Bacteria(DEF_TTL);
-                board[x0][y0] = new Empty();
+                eat(x0, y0, x1, y1);
             } else if (board[x1][y1].getType() == EMPTY) {
                 board[x1][y1] = new Bacteria(board[x0][y0].getTtl());
                 board[x0][y0] = new Empty();

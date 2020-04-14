@@ -74,7 +74,7 @@ public class Sim {
         if (board.getMoved(x0, y0) == 1) {
             return;
         }
-        System.out.println(String.format("[%d, %d]; [%d, %d]", x0, y0, x1, y1));
+        // System.out.println(String.format("[%d, %d]; [%d, %d]", x0, y0, x1, y1));
         board.moveOrg(x0, y0, x1, y1);
         board.setMoved(x1, y1, 1);
     }

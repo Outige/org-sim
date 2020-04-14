@@ -22,12 +22,12 @@ public class Main {
             sim.playOrg(board, BACTERIA, bac);
         }
         do {
-            sim.playOrg(board, FOOD, 5);
+            sim.playOrg(board, FOOD, 1);
             board.print_board();
             sim.moveOrgs(board);
             sim.reduceAllTtl(board);
             
-            //! jankey wait
+            // //! jankey wait
             // long start = System.currentTimeMillis();
             // do {
             // } while ((System.currentTimeMillis() - start) < 1);
