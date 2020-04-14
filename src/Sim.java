@@ -79,23 +79,16 @@ public class Sim {
         board.setMoved(x1, y1, 1);
     }
 
+    //! perhaps this would be better if you picked a random org from the board
     public void moveOrgs(Board board) {
         Random r = new Random();
         for (int i = 0; i < this.length; i++) {
             for (int j = 0; j < this.length; j++) {
                 if (board.getType(i, j) == BACTERIA) {
                     ArrayList<Integer> list = new ArrayList<Integer>();
-                    board.getMoveList(this.length, i, j, list);
-                    validateMoveList(board, list);
-                    // for (int x = 0; x < list.size(); x+=2) {
-                    //     System.out.println(String.format("[%d]=[%d, %d]", x/2, list.get(x), list.get(x+1)));
-                    // }
-                    if (list.size() > 0) {
-                        int pos = r.nextInt(list.size()/2);
-                        if (pos%2 == 1) pos = pos-=1;
-                        moveOrg(board, i, j, list.get(pos), list.get(pos+1));
-                        list.clear();
-                    }
+                    board.getMove(this.length, i, j, list);
+                    if (list.size() == 2)
+                        moveOrg(board, i, j, list.get(0), list.get(1));
                 }
             }
         }

@@ -121,25 +121,29 @@ public class Board {
             board[x][y] = new Empty();
     }
 
-    public void getMoveList(int size, int x, int y, ArrayList<Integer> list) {
+    public void getMove(int size, int x, int y, ArrayList<Integer> list) {
         //! this is gonna be a huge case statement
         Org org = board[x][y];
         if (org.getType() == BACTERIA) {
-            ((Bacteria) org).getMoveList(size, x, y, list);
+            ((Bacteria) org).getMove(size, x, y, list, board);
         }
     }
 
+    private void moveBac(int x0, int y0, int x1, int y1) {
+            if (board[x1][y1].getType() == FOOD) {
+                board[x1][y1] = new Bacteria(DEF_TTL);
+                board[x0][y0] = new Empty();
+            } else if (board[x1][y1].getType() == EMPTY) {
+                board[x1][y1] = new Bacteria(board[x0][y0].getTtl());
+                board[x0][y0] = new Empty();
+            }
+    }
+    
     public void moveOrg(int x0, int y0, int x1, int y1) {
         //! gonna be a big switch statement
         // sys
         if (board[x0][y0].getType() == BACTERIA) {
-        if (board[x1][y1].getType() == FOOD) {
-        board[x1][y1] = new Bacteria(DEF_TTL);
-                board[x0][y0] = new Empty();
-            } else if (board[x1][y1].getType() == EMPTY) {
-        board[x1][y1] = new Bacteria(board[x0][y0].getTtl());
-                board[x0][y0] = new Empty();
-            }
+            moveBac(x0,y0, x1, y1);
         }
     }
 }

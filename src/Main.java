@@ -17,20 +17,20 @@ public class Main {
         Sim sim = new Sim(BOARD_SIZE);
 
         int count = 0;
-        int bac = 5;
+        int bac = 1;
         for (int i = 0; i < bac; i++) {
             sim.playOrg(board, BACTERIA, bac);
         }
         do {
-            sim.playOrg(board, FOOD, -5);
+            sim.playOrg(board, FOOD, 5);
             board.print_board();
             sim.moveOrgs(board);
             sim.reduceAllTtl(board);
             
             //! jankey wait
-            long start = System.currentTimeMillis();
-            do {
-            } while ((System.currentTimeMillis() - start) < 1);
+            // long start = System.currentTimeMillis();
+            // do {
+            // } while ((System.currentTimeMillis() - start) < 1);
             count += 1;
         } while (sim.isSim(board));
         board.print_board();
