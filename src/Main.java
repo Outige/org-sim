@@ -20,6 +20,7 @@ public class Main {
         int bac = 1;
         for (int i = 0; i < bac; i++) {
             sim.playOrg(board, BACTERIA, bac);
+            sim.playOrg(board, VIRUS, bac);
         }
         do {
             sim.playOrg(board, FOOD, 1);

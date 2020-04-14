@@ -30,6 +30,9 @@ public class Sim {
             case BACTERIA:
                 board.setBacteria(x, y);
                 break;
+            case VIRUS:
+                board.setVirus(x, y);
+                break;
             default:
                 board.setEmpty(x, y);
         }
@@ -84,12 +87,10 @@ public class Sim {
         Random r = new Random();
         for (int i = 0; i < this.length; i++) {
             for (int j = 0; j < this.length; j++) {
-                if (board.getType(i, j) == BACTERIA) {
-                    ArrayList<Integer> list = new ArrayList<Integer>();
-                    board.getMove(this.length, i, j, list);
-                    if (list.size() == 2)
-                        moveOrg(board, i, j, list.get(0), list.get(1));
-                }
+                ArrayList<Integer> list = new ArrayList<Integer>();
+                board.getMove(this.length, i, j, list);
+                if (list.size() == 2)
+                    moveOrg(board, i, j, list.get(0), list.get(1));
             }
         }
         board.resetMoved();

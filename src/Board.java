@@ -8,7 +8,7 @@ public class Board {
     private final int CANCER = 4;
 
     //! this will be passed in a params
-    private final int DEF_TTL = 7;
+    private final int DEF_TTL = 5;
 
     /* private var */
     private final int length;
@@ -53,6 +53,10 @@ public class Board {
 
     public void setBacteria(int x, int y) {
         this.board[x][y] = new Bacteria(DEF_TTL);
+    }
+
+    public void setVirus(int x, int y) {
+        this.board[x][y] = new Virus(DEF_TTL);
     }
 
     /* helper */
@@ -124,9 +128,17 @@ public class Board {
     public void getMove(int size, int x, int y, ArrayList<Integer> list) {
         //! this is gonna be a huge case statement
         Org org = board[x][y];
-        if (org.getType() == BACTERIA) {
-            ((Bacteria) org).getMove(size, x, y, list, board);
+        switch (org.getType()) {
+            case BACTERIA:
+                ((Bacteria) org).getMove(size, x, y, list, board); break;
+            case VIRUS: 
+                break;
+            default:
+                break;
         }
+        // if (org.getType() == BACTERIA) {
+        //     ((Bacteria) org).getMove(size, x, y, list, board);
+        // }
     }
     
     /* bacteria eat method */
@@ -153,12 +165,22 @@ public class Board {
                 board[x0][y0] = new Empty();
             }
     }
+
+    private void moveVirus(int x0, int y0, int x1, int y1) {
+        System.out.println("move virus");
+    }
     
     public void moveOrg(int x0, int y0, int x1, int y1) {
         //! gonna be a big switch statement
-        // sys
-        if (board[x0][y0].getType() == BACTERIA) {
-            moveBac(x0,y0, x1, y1);
+        Org org = board[x0][y0];
+        switch (org.getType()) {
+            case BACTERIA:
+                moveBac(x0,y0, x1, y1); break;
+            case VIRUS:
+                System.out.println("pp");
+                moveVirus(x0, y0, x1, y1); break;
+            default:
+                break;
         }
     }
 }
