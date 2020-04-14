@@ -48,7 +48,6 @@ public class Sim {
     /* finds a random empty spot to place an organism */
     public void playOrg(Board board, int org, int max) {
         Random r = new Random();
-        int[][] a = new int[board.countOrg(EMPTY)][2];
         ArrayList<Integer> list = new ArrayList<Integer>();
         if (board.countOrg(org) >= max && max > 0) return;
         board.getOrgPosns(EMPTY, list); //! would like to make this work as a tripple pointer instead of having to make full sized array
