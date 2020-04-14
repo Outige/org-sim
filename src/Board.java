@@ -131,8 +131,8 @@ public class Board {
         switch (org.getType()) {
             case BACTERIA:
                 ((Bacteria) org).getMove(size, x, y, list, board); break;
-            case VIRUS: 
-                break;
+            case VIRUS:
+                ((Virus) org).getMove(size, x, y, list, board); break;
             default:
                 break;
         }
