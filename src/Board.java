@@ -8,7 +8,7 @@ public class Board {
     private final int CANCER = 4;
 
     //! this will be passed in a params
-    private final int DEF_TTL = 5;
+    private final int DEF_TTL = 20;
 
     /* private var */
     private final int length;
@@ -131,6 +131,7 @@ public class Board {
 
     public void moveOrg(int x0, int y0, int x1, int y1) {
         //! gonna be a big switch statement
+        // sys
         if (board[x0][y0].getType() == BACTERIA) {
         if (board[x1][y1].getType() == FOOD) {
         board[x1][y1] = new Bacteria(DEF_TTL);

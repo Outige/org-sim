@@ -28,11 +28,9 @@ public class Main {
         // board.print_board();
         // }
 
-        sim.playOrg(board, FOOD);
-        sim.playOrg(board, BACTERIA);
+        sim.playOrg(board, BACTERIA, 1);
         do {
-
-
+            sim.playOrg(board, FOOD, -5);
             board.print_board();
             sim.moveOrgs(board);
             sim.reduceAllTtl(board);
@@ -40,7 +38,7 @@ public class Main {
             //! jankey wait
             long start = System.currentTimeMillis();
             do {
-            } while ((System.currentTimeMillis() - start) < 3000);
+            } while ((System.currentTimeMillis() - start) < 1000);
         } while (sim.isSim(board));
         board.print_board();
     }

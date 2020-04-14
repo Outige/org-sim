@@ -46,10 +46,11 @@ public class Sim {
     }
 
     /* finds a random empty spot to place an organism */
-    public void playOrg(Board board, int org) {
+    public void playOrg(Board board, int org, int max) {
         Random r = new Random();
         int[][] a = new int[board.countOrg(EMPTY)][2];
         ArrayList<Integer> list = new ArrayList<Integer>();
+        if (board.countOrg(org) >= max && max > 0) return;
         board.getOrgPosns(EMPTY, list); //! would like to make this work as a tripple pointer instead of having to make full sized array
         if (list.size() == 0) {
             System.out.println("No empty space");
@@ -70,7 +71,10 @@ public class Sim {
 
     //! gonna make this in board
     public void moveOrg(Board board, int x0, int y0, int x1, int y1) {
-        if (board.getMoved(x0, y0) == 1) return;
+        // System.out.println(String.format("[%d, %d] already moved!", x0, y0));
+        if (board.getMoved(x0, y0) == 1) {
+            return;
+        }
         System.out.println(String.format("[%d, %d]; [%d, %d]", x0, y0, x1, y1));
         board.moveOrg(x0, y0, x1, y1);
         board.setMoved(x1, y1, 1);
@@ -84,9 +88,14 @@ public class Sim {
                     ArrayList<Integer> list = new ArrayList<Integer>();
                     board.getMoveList(this.length, i, j, list);
                     validateMoveList(board, list);
+                    // for (int x = 0; x < list.size(); x+=2) {
+                    //     System.out.println(String.format("[%d]=[%d, %d]", x/2, list.get(x), list.get(x+1)));
+                    // }
                     if (list.size() > 0) {
                         int pos = r.nextInt(list.size()/2);
+                        if (pos%2 == 1) pos = pos-=1;
                         moveOrg(board, i, j, list.get(pos), list.get(pos+1));
+                        list.clear();
                     }
                 }
             }
